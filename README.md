@@ -29,49 +29,53 @@ Desenvolver uma aplicação onde o será passado um código ou numero ISO 4217 (
 - Input de dados:  **Código ISO** valido ex: GBP ou um **número** ex: 826
 ```json
 {  
-	"code": "GBP"
-}   
-//ou
+  "code": "GBP"
+}
+```
+OU 
+```json
 {  
-	"code_list": ["GBP", "GEL", "HKD"]  
-}    
-//ou  
+  "code_list": ["GBP", "GEL", "HKD"]  
+}
+```
+OU 
+```json
 {  
-	"number": [242]  
-}  
-//ou  
+  "number": [242]  
+}
+```
+OU
+```json
 {
-	"number_lists": [242, 324]  
-} 
+  "number_lists": [242, 324]  
+}
 ```
 - Retorno esperado:
 ```json
-[
-	{  
-		"code": "GBP",  
-		"number": 826,  
-		"decimal": 2,  
-		"currency": "Libra Esterlina",  
-		"currency_locations": [  
-			{  
-				"location": "Reuno Unido",  
-				"icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/22px-Flag_of_the_United_Kingdom.svg.png"  
-			},  
-			{  
-				"location": "Ilha de Man",  
-				"icon": ""  
-			},  
-			{  
-				"location": "Guernesey",  
-				"icon": ""  
-			},  
-			{  
-				"location": "Jersey",  
-				"icon": ""  
-			}  
-		]  
-	}
-]  
+[{  
+  "code": "GBP",  
+  "number": 826,  
+  "decimal": 2,  
+  "currency": "Libra Esterlina",  
+  "currency_locations": [  
+    {  
+      "location": "Reuno Unido",  
+      "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/22px-Flag_of_the_United_Kingdom.svg.png"  
+    },  
+    {  
+      "location": "Ilha de Man",  
+      "icon": ""  
+    },  
+    {  
+      "location": "Guernesey",  
+      "icon": ""  
+    },  
+    {  
+      "location": "Jersey",  
+      "icon": ""  
+    }  
+  ]  
+}]  
 ```  
 > Esses valores de entrada e saída são apenas exemplos, sinta se a vontade para melhorá-los.
 
