@@ -22,7 +22,7 @@ Primeiramente, obrigado pelo seu interesse em participar do nosso processo selet
 - Fique a vontade para tirar qualquer dúvida com o recrutador sobre o teste.
 
 # Objetivo
-Desenvolver uma aplicação onde o será passado um código ou numero ISO 4217 (*padrão internacional que define códigos de três letras para as moedas*), e a aplicação deve consultar em uma fonte externa, os dados desta moeda.
+Desenvolver uma aplicação onde o será passado um código ou numero ISO 4217 (*padrão internacional que define códigos de três letras para as moedas*), e a aplicação deve realizar o crawling em uma fonte externa, os dados desta moeda.
 
 - Fonte externa: [ISO 4217](https://pt.wikipedia.org/wiki/ISO_4217)
 - A pesquisa pode ser feita com um ou mais items.
