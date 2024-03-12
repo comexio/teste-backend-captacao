@@ -10,8 +10,6 @@ Primeiramente, obrigado pelo seu interesse em participar do nosso processo selet
     - Laravel
     - Symfony
     - Script
-  - **Python**
-    - Script
   - Banco de dados relacional
     - Mysql
     - Postgres
