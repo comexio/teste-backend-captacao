@@ -1,7 +1,7 @@
 
 # Desafio backend Logcomex (Captação)
 
-Primeiramente, obrigado pelo seu interesse em participar do nosso processo seletivo, esta vaga é para desenvolvedor backend com foco em PHP e Python, aqui utilizamos bastante scraping/crawling para capturar dados e o teste vai seguir essa mesma linha.
+Primeiramente, obrigado pelo seu interesse em participar do nosso processo seletivo, esta vaga é para desenvolvedor backend com foco em PHP, aqui utilizamos bastante scraping/crawling para capturar dados e o teste vai seguir essa mesma linha.
 
 # Antes de começar
 - Crie um repositório no seu GitHub sem mencionar o nome da Logcomex
