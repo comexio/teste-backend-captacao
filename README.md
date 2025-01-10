@@ -1,102 +1,84 @@
+# Desafio Backend Logcomex (Captação)
 
-# Desafio backend Logcomex (Captação)
+Obrigado por demonstrar interesse em fazer parte do nosso time! Este desafio foi elaborado para avaliarmos suas habilidades como desenvolvedor backend, especialmente com foco em PHP.
 
-Primeiramente, obrigado pelo seu interesse em participar do nosso processo seletivo, esta vaga é para desenvolvedor backend com foco em PHP, aqui utilizamos bastante scraping/crawling para capturar dados e o teste vai seguir essa mesma linha.
+## Instruções Iniciais
+1. Crie um repositório no GitHub para o teste. Certifique-se de **não mencionar o nome da Logcomex** no repositório.
+2. Stack
+    - **PHP**:
+      - Laravel ou um script PHP puro
+    - Banco de dados relacional:
+      - MySQL ou PostgreSQL
+    - Banco de dados não relacional:
+      - Redis
+3. Fora as tecnologias mencionadas, você está livre para utilizar quaisquer outras ferramentas, bibliotecas ou frameworks que considere úteis.
+4. Caso tenha dúvidas, sinta-se à vontade para entrar em contato com o recrutador.
 
-# Antes de começar
-- Crie um repositório no seu GitHub sem mencionar o nome da Logcomex
-- Stack que pode ser utilizada:
-  - **PHP**
-    - Laravel
-    - Symfony
-    - Script
-  - Banco de dados relacional
-    - Mysql
-    - Postgres
-  - Banco de dados não relacional
-    - Redis
-    - MongoDB
-  - Tirando essas restrições acima, o restante fica a seu critério.
-- Fique a vontade para tirar qualquer dúvida com o recrutador sobre o teste.
+## Objetivo
+O desafio consiste em criar uma aplicação capaz de buscar dados na [página da Wikipédia](https://pt.wikipedia.org/wiki/Lista_das_maiores_empresas_do_Brasil) que contém a lista das maiores empresas do Brasil. O objetivo é filtrar as empresas pelo lucro, com base nos parâmetros enviados na requisição.
 
-# Objetivo
-Desenvolver uma aplicação onde o será passado um código ou numero ISO 4217 (*padrão internacional que define códigos de três letras para as moedas*), e a aplicação deve realizar o crawling em uma fonte externa, os dados desta moeda.
+### Detalhes do Funcionamento
+Sua aplicação deve implementar:
+1. Uma API que receba os seguintes parâmetros:
+   ```json
+   {
+     "rule": "greater", // ou "smaller", ou "between"
+     "billions": 15,    // valor de referência em bilhões
+     "range": [10, 20]  // somente para o caso "between" (opcional)
+   }
+   ```
+2. A API deve retornar as empresas que atendem ao critério fornecido, com a seguinte estrutura de resposta:
+   ```json
+   [
+     {
+       "company_name": "Petrobras",
+       "profit": "36.47",
+       "rank": 1
+     },
+     {
+       "company_name": "Vale",
+       "profit": "15.98",
+       "rank": 3
+     }
+   ]
+   ```
 
-- Fonte externa: [ISO 4217](https://pt.wikipedia.org/wiki/ISO_4217)
-- A pesquisa pode ser feita com um ou mais items.
-- Input de dados:  **Código ISO** valido ex: GBP ou um **número** ex: 826
-```json
-{  
-  "code": "GBP"
-}
-```
-OU 
-```json
-{  
-  "code_list": ["GBP", "GEL", "HKD"]  
-}
-```
-OU 
-```json
-{  
-  "number": [242]  
-}
-```
-OU
-```json
-{
-  "number_lists": [242, 324]  
-}
-```
-- Retorno esperado:
-```json
-[{  
-  "code": "GBP",  
-  "number": 826,  
-  "decimal": 2,  
-  "currency": "Libra Esterlina",  
-  "currency_locations": [  
-    {  
-      "location": "Reuno Unido",  
-      "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/22px-Flag_of_the_United_Kingdom.svg.png"  
-    },  
-    {  
-      "location": "Ilha de Man",  
-      "icon": ""  
-    },  
-    {  
-      "location": "Guernesey",  
-      "icon": ""  
-    },  
-    {  
-      "location": "Jersey",  
-      "icon": ""  
-    }  
-  ]  
-}]  
-```  
-> Esses valores de entrada e saída são apenas exemplos, sinta se a vontade para melhorá-los.
+### Regras de Negócio
+- "**greater**": Retornar empresas com lucro maior que o valor especificado.
+- "**smaller**": Retornar empresas com lucro menor que o valor especificado.
+- "**between**" (bônus): Retornar empresas com lucro dentro do intervalo especificado em "range".
 
-## Observações:
+### Requisitos Adicionais
+1. Todos os retornos em "profit" devem ser em bilhões. Por exemplo, a Cosan, que obteve lucro de 228 milhões, deve ser retornada como `0.228` bilhões.
+2. Deve haver alguma estratégia que evite que vários requests sobrecarreguem a fonte ao mesmo tempo ou em um curto período de tempo.
+3. Os dados devem ser salvos em tabelas relacionais para guardar o histórico das informações.
+4. O HTML da captura deve ser salvo para servir como prova dos dados capturados.
 
-- A tabela de dados da fonte não deve ser salva por inteiro no banco de dados.
-- Utilizar a versão em português da página.
-- Não precisa ter autenticação
+## Requisitos e Pontos de Avaliação
+### Obrigatórios:
+- **Documentação**:
+  - Descreva como rodar o projeto (instalação, dependências, execução e exemplos de uso).
+- **Código Limpo e Organizado**:
+  - Seguir padrões de código PHP (PSRs).
+  - Aplicar boas práticas de design (SOLID, design patterns, etc.).
+- **Modelagem de Dados**:
+  - Escolha adequada de tipos de dados e estruturação.
+- **Tratamento de Erros**:
+  - Validação de inputs e respostas adequadas em casos de erro.
+- **Testes Unitários**:
+  - Cobertura mínima das principais funcionalidades.
 
-## O que será avaliado
-- Documentação
-- Código limpo e organizado
-- Conhecimento de padrões (PSRs, design patterns, SOLID, Object Calisthenics)
-- Ser consistente e saber argumentar suas escolhas
-- Modelagem de Dados
-- Tratamento de erros
-- Arquitetura (estruturar o pensamento antes de escrever)
-- Testes unitários
+### Bônus:
+- Implementar a funcionalidade "**between**". **NAO É OBRIGATÓRIO**
+- Criar testes de integração.
+- Adicionar logs para depuração.
+- Utilizar containers Docker para simplificar a execução.
+- Oferecer uma solução com foco em performance.
 
-## O que será um diferencial
-- Docker
-- Caching
-- Testes de mutação
+## Dicas e Observações Finais
+- Estruture bem sua solução antes de iniciar a codificação.
+- Demonstre consistência em suas decisões e esteja preparado para justificá-las.
+- Não se esqueça de tratar cenários inesperados, como mudanças na estrutura da página da Wikipédia ou valores não numéricos.
 
-## Avaliação
-Após a finalização do teste, será marcado uma call para que você apresente a solução desenvolvida, explicando o porquê das suas escolhas, como, por exemplo, a stack utilizada, quais os padrões adotados, como você pensou nos testes e cenários possíveis.  
+Boa sorte! Estamos ansiosos para ver sua solução e conhecer seu potencial!
+
